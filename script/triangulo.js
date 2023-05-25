@@ -7,6 +7,8 @@ class ResultadoT {
 
 let resultadosT = [];
 
+document.querySelector("#segundaPantalla").innerHTML= "Esperando datos para calcular el área";
+
 document.querySelector("#btnTriangulo").addEventListener("click", () => {
 
     const b = parseFloat(document.querySelector("#base").value);
@@ -31,8 +33,11 @@ document.querySelector("#btnTriangulo").addEventListener("click", () => {
         }).showToast();
 
     } else {
+
+        document.querySelector("#segundaPantalla").innerHTML= "";
+
         const r = (b * a) / 2;
-        document.querySelector("#pantalla").innerHTML = r.toFixed(2);
+        document.querySelector("#pantalla").innerHTML = r.toFixed(2) + " m2";
 
         //Agrupo todos los resultados en un único array
 
@@ -52,7 +57,7 @@ document.querySelector("#btnTriangulo").addEventListener("click", () => {
         
         let resultados = '';
         convertidoT.forEach(element => {
-            resultados += `<p>${element.r}</p>`
+            resultados += `<p>${element.r + " m2"}</p>`
         });
         document.querySelector("#segundaPantalla").innerHTML = resultados
 
@@ -74,10 +79,11 @@ document.querySelector("#btnTriangulo").addEventListener("click", () => {
 document.querySelector("#borrarTriangulo").addEventListener("click", () => {
     const r = 0;
     const reset = "";
+    const reset2 = "Esperando datos para calcular el área";
     document.querySelector("#pantalla").innerHTML = r;
     document.querySelector("#base").value = reset;
     document.querySelector("#altura").value = reset;
-    document.querySelector("#segundaPantalla").innerHTML = reset;
+    document.querySelector("#segundaPantalla").innerHTML = reset2;
 });
 
 

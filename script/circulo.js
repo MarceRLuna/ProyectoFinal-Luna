@@ -7,11 +7,22 @@ class ResultadoC {
 
 let resultadosC = [];
 
+//Mensajes por defecto
+
+document.querySelector("#pantallaCirculo").innerHTML = "Esperando datos para calcular el área";
+
+document.querySelector("#segundaPantallaCirculo").innerHTML = "Esperando para mostrar todas las areas calculadas";
+
+//Acciones a realizar pulsando los botones
+
 document.querySelector("#btnCirculo").addEventListener("click", () => {
     
     const radio = parseFloat(document.querySelector("#radio").value);
     
     if (radio != parseFloat(document.querySelector("#radio").value)) {
+
+        document.querySelector("#pantallaCirculo").innerHTML = "";
+
         const mensaje = "Ingrese un nro. que represente los metros del radio del circulo";
         
         document.querySelector("#pantallaCirculo").innerHTML = mensaje;
@@ -30,8 +41,13 @@ document.querySelector("#btnCirculo").addEventListener("click", () => {
         }).showToast();        
 
     } else {
+
+        // //limpio la pantalla con el mensaje cargado por defecto
+
+        document.querySelector("#pantallaCirculo").innerHTML = "";
+
         const resultado = Math.PI * Math.pow(radio, 2);
-        document.querySelector("#pantallaCirculo").innerHTML = resultado.toFixed(2);
+        document.querySelector("#pantallaCirculo").innerHTML = resultado.toFixed(2) + " m2";
 
 
         //Agrupo todos los resultados en un único array
@@ -41,20 +57,7 @@ document.querySelector("#btnCirculo").addEventListener("click", () => {
         console.log(resultadosC);
 
         //guardo el resultado en el localSorage
-        localStorage.setItem("resultadosC", JSON.stringify(resultadosC));
-
-        //recupero lo guardado en el localStorage
-        
-        const recuperado = localStorage.getItem("resultadosC");
-        const convertido = JSON.parse(recuperado);
-        
-        //muestro los resultados guardados en el html
-
-        let resultadosCir = [];
-        convertido.forEach(element => {
-            resultadosCir += `<p>${element.r}</p>`
-        });
-        document.querySelector("#segundaPantallaCirculo").innerHTML = resultadosCir;
+        localStorage.setItem("resultadosC", JSON.stringify(resultadosC));        
 
         Toastify({
             text: "Cálculo realizado..!!!",
@@ -74,9 +77,33 @@ document.querySelector("#btnCirculo").addEventListener("click", () => {
 
 document.querySelector("#borrarCirculo").addEventListener("click", () => {
     
-    const r = 0;
+    const r = "Esperando datos para calcular el área";
     const reset = "";
+    const resetDos = "Esperando para mostrar todas las areas calculadas";
     document.querySelector("#pantallaCirculo").innerHTML = r;
     document.querySelector("#radio").value = reset;
-    document.querySelector("#segundaPantallaCirculo").innerHTML= reset;
+    document.querySelector("#segundaPantallaCirculo").innerHTML= resetDos;
+});
+
+document.querySelector("#mostrarResultadosCirculo").addEventListener("click", () => {
+
+    //limpio la pantalla con el mensaje cargado por defecto
+
+    document.querySelector("#segundaPantallaCirculo").innerHTML = "";
+
+    //recupero lo guardado en el localStorage
+        
+    const recuperado = localStorage.getItem("resultadosC");
+    const convertido = JSON.parse(recuperado);
+
+    //muestro los resultados en el html
+
+    setTimeout(() => {
+        convertido.forEach(element => {            
+            const p = document.createElement("p");
+            p.textContent = element.r + " m2";
+            segundaPantallaCirculo.append(p);
+        });
+    }, 1000);
+
 });

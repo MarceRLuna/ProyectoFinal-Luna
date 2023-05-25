@@ -5,8 +5,15 @@ class Resultado {
     }
 }
 
-
 let resultados = [];
+
+//Mensajes por defecto
+
+document.querySelector("#pantallaCuadrado").innerHTML = "Esperando datos para calcular el área";
+
+document.querySelector("#segundaPantallaC").innerHTML = "Esperando para mostrar todas las areas calculadas";
+
+//Acciones a realizar pulsando los botones
 
 document.querySelector("#btnCuadrado").addEventListener("click", () => {
 
@@ -14,6 +21,9 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
 
 
     if (l != parseFloat(document.querySelector("#lados").value)) {
+
+        document.querySelector("#pantallaCuadrado").innerHTML = "";
+
         const mensaje = "Ingrese un nro. que represente los metros de uno de los lados del cuadrado";
 
         document.querySelector("#pantallaCuadrado").innerHTML = mensaje;
@@ -28,12 +38,17 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
                 background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },            
+            },
         }).showToast();
 
     } else {
+
+        // //limpio la pantalla con el mensaje cargado por defecto
+
+        document.querySelector("#pantallaCuadrado").innerHTML = "";
+
         const r = Math.pow(l, 2);
-        document.querySelector("#pantallaCuadrado").innerHTML = r.toFixed(2);
+        document.querySelector("#pantallaCuadrado").innerHTML = r.toFixed(2) + " m2";
 
         //Agrupo todos los resultados en un único array
 
@@ -43,19 +58,8 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
         //guardo el resultado en el localSorage
         localStorage.setItem("resultados", JSON.stringify(resultados));
 
-        //recupero lo guardado en el localStorage
+        //Libreria Toastify
 
-        const recuperado = localStorage.getItem("resultados");
-        const convertido = JSON.parse(recuperado);
-
-        //muestro los resultados guardados en el html
-
-        let resultadosC = [];
-        convertido.forEach(element => {
-            resultadosC += `<p>${element.r}</p>`
-        });
-        document.querySelector("#segundaPantallaC").innerHTML = resultadosC;
-                
         Toastify({
             text: "Cálculo realizado..!!!",
             duration: 3000,
@@ -76,10 +80,35 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
 })
 
 document.querySelector("#borrarCuadrado").addEventListener("click", () => {
-    const r = 0;
+    const r = "Esperando datos para calcular el área";
     const reset = "";
+    const resetDos = "Esperando para mostrar todas las areas calculadas";
     document.querySelector("#pantallaCuadrado").innerHTML = r;
     document.querySelector("#lados").value = reset;
-    document.querySelector("#segundaPantallaC").innerHTML = reset;
+    document.querySelector("#segundaPantallaC").innerHTML = resetDos;
+});
+
+document.querySelector("#mostrarResultadosCuadrado").addEventListener("click", () => {
+
+    //limpio la pantalla con el mensaje cargado por defecto
+
+    document.querySelector("#segundaPantallaC").innerHTML = "";
+
+    //recupero lo guardado en el localStorage
+
+    const recuperado = localStorage.getItem("resultados");
+    const convertido = JSON.parse(recuperado);
+
+    //muestro los resultados en el html
+
+    setTimeout(() => {
+        convertido.forEach(element => {
+            //resultadosC += `<p>${element.r}</p>`
+            const p = document.createElement("p");
+            p.textContent = element.r + " m2";
+            segundaPantallaC.append(p);
+        });
+    }, 1000);
+
 });
 

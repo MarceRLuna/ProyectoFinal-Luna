@@ -43,7 +43,7 @@ body {
     position: relative;
 }
 
-#pantalla {
+#pantalla, #pantallaCuadrado, #pantallaCirculo {
     background-color: whitesmoke;
     font-size: 18px;
     font-family: monospace;
@@ -55,7 +55,7 @@ body {
     border: 2px solid black;
 }
 
-#segundaPantalla {
+#segundaPantalla, #segundaPantallaC, #segundaPantallaCirculo{
     background-color: whitesmoke;
     font-size: 18px;
     font-family: monospace;
@@ -75,7 +75,7 @@ body {
     position: relative;
 }
 
-#pantallaCuadrado {
+/* #pantallaCuadrado {
     background-color: whitesmoke;
     font-size: 18px;
     font-family: monospace;
@@ -85,19 +85,7 @@ body {
     padding: .5rem;
     border-radius: 10px;
     border: 2px solid black;
-}
-
-#segundaPantallaC {
-    background-color: whitesmoke;
-    font-size: 18px;
-    font-family: monospace;
-    font-weight: 600;
-    height: 100%;
-    width: 50%;
-    padding: .5rem;
-    border-radius: 10px;
-    border: 2px solid black;
-}
+} */
 
 .areaCirculo {
     display: flex;
@@ -108,7 +96,7 @@ body {
 
 }
 
-#pantallaCirculo {
+/* #pantallaCirculo {
     background-color: whitesmoke;
     font-size: 18px;
     font-family: monospace;
@@ -118,19 +106,7 @@ body {
     padding: .5rem;
     border-radius: 10px;
     border: 2px solid black;
-}
-
-#segundaPantallaCirculo {
-    background-color: whitesmoke;
-    font-size: 18px;
-    font-family: monospace;
-    font-weight: 600;
-    height: 100%;
-    width: 50%;
-    padding: .5rem;
-    border-radius: 10px;
-    border: 2px solid black;
-}
+} */
 
 h1 {
     width: 70%;
@@ -163,17 +139,6 @@ h1 span {
     width: 60%;
     border-radius: 10px;
 }
-
-/*#btnTriangulo {
-    color: rgb(228, 228, 235);
-    background: linear-gradient(to right, #0c9181, #85be23);
-    font-weight: bold;
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 10px;
-    box-shadow: 1px 1px whitesmoke;
-    cursor: pointer;
-}*/
 
 #btnTriangulo {
     background: linear-gradient(to right, #0c9181, #85be23);
@@ -252,17 +217,6 @@ input:hover {
     transform: translate(4px, 4px);
 }
 
-/*#btnCirculo {
-    color: rgb(228, 228, 235);
-    background: linear-gradient(to right, #0c9181, #85be23);
-    font-weight: bold;
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 10px;
-    box-shadow: 1px 1px whitesmoke;
-    cursor: pointer;
-}*/
-
 #btnCirculo {
     background: linear-gradient(to right, #0c9181, #85be23);
     color: #ffffff;
@@ -299,7 +253,7 @@ input:hover {
     transform: translate(4px, 4px);
 }
 
-#borrarTriangulo {
+#borrarTriangulo, #borrarCuadrado, #borrarCirculo {
     color: rgb(228, 228, 235);
     background: linear-gradient(to right, #0c9181, #85be23);
     font-weight: bold;
@@ -310,18 +264,7 @@ input:hover {
     cursor: pointer;
 }
 
-#borrarCuadrado {
-    color: rgb(228, 228, 235);
-    background: linear-gradient(to right, #0c9181, #85be23);
-    font-weight: bold;
-    padding: 6px;
-    font-size: 1rem;
-    border-radius: 10px;
-    box-shadow: 1px 1px whitesmoke;
-    cursor: pointer;
-}
-
-#borrarCirculo {
+#mostrarResultadosCuadrado, #mostrarResultadosCirculo{    
     color: rgb(228, 228, 235);
     background: linear-gradient(to right, #0c9181, #85be23);
     font-weight: bold;
