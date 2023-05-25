@@ -28,6 +28,8 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
 
         document.querySelector("#pantallaCuadrado").innerHTML = mensaje;
 
+        //Libreria Toastify
+
         Toastify({
             text: "Cálculo no realizado..!!!",
             duration: 3000,
@@ -66,10 +68,7 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
             newWindow: true,
             close: true,
             gravity: "bottom", // `top` or `bottom`            
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            /*style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },*/
+            stopOnFocus: true, // Prevents dismissing of toast on hover            
             offset: {
                 x: 837, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
                 y: 60 // vertical axis - can be a number or a string indicating unity. eg: '2em'
@@ -97,16 +96,17 @@ document.querySelector("#mostrarResultadosCuadrado").addEventListener("click", (
     //recupero lo guardado en el localStorage
 
     const recuperado = localStorage.getItem("resultados");
-    const convertido = JSON.parse(recuperado);
+    const convertido = JSON.parse(recuperado);    
 
     //muestro los resultados en el html
 
     setTimeout(() => {
-        convertido.forEach(element => {            
+        convertido.forEach(element => {
             const p = document.createElement("p");
             p.textContent = element.r + " m2";
-            segundaPantallaC.append(p);
+            segundaPantallaC.append(p);            
         });
+        console.log(convertido);
     }, 1000);
 
 });
