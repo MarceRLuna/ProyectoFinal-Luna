@@ -102,8 +102,7 @@ document.querySelector("#mostrarResultadosCuadrado").addEventListener("click", (
     //muestro los resultados en el html
 
     setTimeout(() => {
-        convertido.forEach(element => {
-            //resultadosC += `<p>${element.r}</p>`
+        convertido.forEach(element => {            
             const p = document.createElement("p");
             p.textContent = element.r + " m2";
             segundaPantallaC.append(p);
