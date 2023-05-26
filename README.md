@@ -2,7 +2,8 @@
 # Project Title
 
 Curso de Javascript
-Tercera pre-entrega del proyecto final
+Entrega del proyecto final
+
 ## Authors
 
 - Marcelo Luna
@@ -10,19 +11,24 @@ Tercera pre-entrega del proyecto final
 
 ## Documentation
 
-El presente contiene ejercitación para la tercer pre-entrega del proyecto final.
+El presente contiene ejercitación para la entrega del proyecto final.
 
 Como ser los siguientes:
 * Funciones.
 * Variables - declaración e inicialización.
 * Objetos
-* DOM
+* DOM - modificación desde archivos javascript
 * Eventos
 * Funciones de orden superior - uso de la función Math
-* LocalStorage - almacenamieto y recuperación
+* LocalStorage - almacenamiento y recuperación
+* Libreria - Toastify
+* Asincronía y promesas - uso de la función "fetch"
+* Html y estilos en CSS.
+
 ## Feedback
 
-Este trabajo es solamente para la entraga del práctico nro. 3, su estructura no debiera ser tomada necesariamente como propuesta para mi proyecto real.
+Este trabajo es solamente para la entraga del práctico final.
+
 ## Used By
 
 Este proyecto puede ser usado por los alumnos de la comisión 39505 o quién pueda aprovecharlo, para tener guías básicas de cómo abordar los conceptos que en este se intentan transmitir.

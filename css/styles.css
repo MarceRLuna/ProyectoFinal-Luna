@@ -240,7 +240,7 @@ input:hover {
     cursor: pointer;
 }
 
-#mostrarResultadosCuadrado, #mostrarResultadosCirculo{    
+#mostrarResultadosCuadrado, #mostrarResultadosCirculo, #mostrarResultadosTriangulo{    
     color: rgb(228, 228, 235);
     background: linear-gradient(to right, #0c9181, #85be23);
     font-weight: bold;

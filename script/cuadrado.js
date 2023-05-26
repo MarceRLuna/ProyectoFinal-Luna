@@ -13,7 +13,7 @@ document.querySelector("#pantallaCuadrado").innerHTML = "Esperando datos para ca
 
 document.querySelector("#segundaPantallaC").innerHTML = "Esperando para mostrar todas las areas calculadas";
 
-//Acciones a realizar pulsando los botones
+//Acción al pulsar botón para calcular el área
 
 document.querySelector("#btnCuadrado").addEventListener("click", () => {
 
@@ -36,11 +36,8 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
             newWindow: true,
             close: true,
             gravity: "top", // `top` or `bottom`
-            position: "center",
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },
+            position: "left",
+            stopOnFocus: true, // Prevents dismissing of toast on hover            
         }).showToast();
 
     } else {
@@ -67,16 +64,15 @@ document.querySelector("#btnCuadrado").addEventListener("click", () => {
             duration: 3000,
             newWindow: true,
             close: true,
-            gravity: "bottom", // `top` or `bottom`            
-            stopOnFocus: true, // Prevents dismissing of toast on hover            
-            offset: {
-                x: 837, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-                y: 60 // vertical axis - can be a number or a string indicating unity. eg: '2em'
-            }
+            gravity: "bottom", // `top` or `bottom`
+            position: "left",            
+            stopOnFocus: true, // Prevents dismissing of toast on hover          
         }).showToast();
 
     }
 })
+
+//Acción al pulsar botón para borar resultados
 
 document.querySelector("#borrarCuadrado").addEventListener("click", () => {
     const r = "Esperando datos para calcular el área";
@@ -86,6 +82,8 @@ document.querySelector("#borrarCuadrado").addEventListener("click", () => {
     document.querySelector("#lados").value = reset;
     document.querySelector("#segundaPantallaC").innerHTML = resetDos;
 });
+
+//Acción al pulsar botón para mostrar los resultados de las áreas calculadas
 
 document.querySelector("#mostrarResultadosCuadrado").addEventListener("click", () => {
 

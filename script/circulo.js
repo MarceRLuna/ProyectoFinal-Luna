@@ -13,7 +13,7 @@ document.querySelector("#pantallaCirculo").innerHTML = "Esperando datos para cal
 
 document.querySelector("#segundaPantallaCirculo").innerHTML = "Esperando para mostrar todas las areas calculadas";
 
-//Acciones a realizar pulsando los botones
+//Acción al pulsar botón para calcular el área
 
 document.querySelector("#btnCirculo").addEventListener("click", () => {
     
@@ -27,6 +27,8 @@ document.querySelector("#btnCirculo").addEventListener("click", () => {
         
         document.querySelector("#pantallaCirculo").innerHTML = mensaje;
         
+        //Libreria Toastify
+
         Toastify({
             text: "Cálculo no realizado..!!!",
             duration: 3000,
@@ -34,10 +36,7 @@ document.querySelector("#btnCirculo").addEventListener("click", () => {
             close: true,
             gravity: "bottom", // `top` or `bottom`
             position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },            
+            stopOnFocus: true, // Prevents dismissing of toast on hover                      
         }).showToast();        
 
     } else {
@@ -59,6 +58,8 @@ document.querySelector("#btnCirculo").addEventListener("click", () => {
         //guardo el resultado en el localSorage
         localStorage.setItem("resultadosC", JSON.stringify(resultadosC));        
 
+        //Libreria Toastify
+
         Toastify({
             text: "Cálculo realizado..!!!",
             duration: 3000,
@@ -66,14 +67,13 @@ document.querySelector("#btnCirculo").addEventListener("click", () => {
             close: true,
             gravity: "bottom", // `top` or `bottom`
             position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },            
+            stopOnFocus: true, // Prevents dismissing of toast on hover                        
         }).showToast();
         
     }  
 })
+
+//Acción al pulsar botón para borar resultados
 
 document.querySelector("#borrarCirculo").addEventListener("click", () => {
     
@@ -84,6 +84,8 @@ document.querySelector("#borrarCirculo").addEventListener("click", () => {
     document.querySelector("#radio").value = reset;
     document.querySelector("#segundaPantallaCirculo").innerHTML= resetDos;
 });
+
+//Acción al pulsar botón para mostrar los resultados de las áreas calculadas
 
 document.querySelector("#mostrarResultadosCirculo").addEventListener("click", () => {
 

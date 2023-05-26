@@ -7,7 +7,11 @@ class ResultadoT {
 
 let resultadosT = [];
 
-document.querySelector("#segundaPantalla").innerHTML= "Esperando datos para calcular el área";
+document.querySelector("#pantalla").innerHTML= "Esperando datos para calcular el área";
+
+document.querySelector("#segundaPantalla").innerHTML = "Esperando para mostrar todas las areas calculadas";
+
+//Acción al pulsar botón para calcular el área
 
 document.querySelector("#btnTriangulo").addEventListener("click", () => {
 
@@ -15,9 +19,14 @@ document.querySelector("#btnTriangulo").addEventListener("click", () => {
     const a = parseFloat(document.querySelector("#altura").value);
 
     if (b != parseFloat(document.querySelector("#base").value) || a != parseFloat(document.querySelector("#altura").value)) {
+        
+        document.querySelector("#pantalla").innerHTML = "";
+
         const mensaje = "Ingrese nros. que representen los metros de la base y/o la altura";
 
         document.querySelector("#pantalla").innerHTML = mensaje;
+
+        //Libreria Toastify
 
         Toastify({
             text: "Cálculo no realizado..!!!",
@@ -26,16 +35,15 @@ document.querySelector("#btnTriangulo").addEventListener("click", () => {
             close: true,
             gravity: "bottom", // `top` or `bottom`
             position: "left", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },
+            stopOnFocus: true, // Prevents dismissing of toast on hover            
         }).showToast();
 
     } else {
 
-        document.querySelector("#segundaPantalla").innerHTML= "";
+        // //limpio la pantalla con el mensaje cargado por defecto
 
+        document.querySelector("#pantalla").innerHTML = "";
+        
         const r = (b * a) / 2;
         document.querySelector("#pantalla").innerHTML = r.toFixed(2) + " m2";
 
@@ -47,19 +55,8 @@ document.querySelector("#btnTriangulo").addEventListener("click", () => {
 
         //guardo el resultado en el localStorage
         localStorage.setItem("resultadosT", JSON.stringify(resultadosT));
-
-        //recupero lo guardado en el localStorage
-
-        const recuperadoT = localStorage.getItem("resultadosT");
-        const convertidoT = JSON.parse(recuperadoT);
-
-        //muestro los resultados guardados en el html
         
-        let resultados = '';
-        convertidoT.forEach(element => {
-            resultados += `<p>${element.r + " m2"}</p>`
-        });
-        document.querySelector("#segundaPantalla").innerHTML = resultados
+        //Libreria Toastify
 
         Toastify({
             text: "Cálculo realizado..!!!",
@@ -68,22 +65,46 @@ document.querySelector("#btnTriangulo").addEventListener("click", () => {
             close: true,
             gravity: "bottom", // `top` or `bottom`
             position: "left", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },
+            stopOnFocus: true, // Prevents dismissing of toast on hover            
         }).showToast();
     }
 })
 
+//Acción al pulsar botón para borar resultados
+
 document.querySelector("#borrarTriangulo").addEventListener("click", () => {
-    const r = 0;
+    const r = "Esperando datos para calcular el área";
     const reset = "";
-    const reset2 = "Esperando datos para calcular el área";
+    const reset2 = "Esperando para mostrar todas las areas calculadas";
     document.querySelector("#pantalla").innerHTML = r;
     document.querySelector("#base").value = reset;
     document.querySelector("#altura").value = reset;
     document.querySelector("#segundaPantalla").innerHTML = reset2;
+});
+
+//Acción al pulsar botón para mostrar los resultados de las áreas calculadas
+
+document.querySelector("#mostrarResultadosTriangulo").addEventListener("click", () => {
+
+    //limpio la pantalla con el mensaje cargado por defecto
+
+    document.querySelector("#segundaPantalla").innerHTML = "";
+
+    //recupero lo guardado en el localStorage
+
+    const recuperadoT = localStorage.getItem("resultadosT");
+    const convertidoT = JSON.parse(recuperadoT);    
+
+    //muestro los resultados en el html
+
+    setTimeout(() => {
+        convertidoT.forEach(element => {
+            const p = document.createElement("p");
+            p.textContent = element.r + " m2";
+            segundaPantalla.append(p);            
+        });        
+    }, 1000);
+
 });
 
 
